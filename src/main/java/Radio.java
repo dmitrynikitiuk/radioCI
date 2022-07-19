@@ -1,59 +1,78 @@
+
 public class Radio {
-    public int currentVolume;
+    private int сurrentStation;
+    private int currentVolume;
+    private int stationsNumber;
 
-    public void setToMaxVolume() {
-        currentVolume = 10;
+    public Radio() {
+
     }
 
-    public void setToMinVolume() {
-        currentVolume = 0;
+    public Radio(int stationsNumber) {
+        this.stationsNumber = stationsNumber;
     }
 
-    public int increaseVolume() {
-        if (currentVolume < 10) {
+
+    public int getСurrentStation() {
+        return сurrentStation;
+    }
+
+    public void nextStation() {
+        if (сurrentStation < 9) {
+            сurrentStation = сurrentStation + 1;
+            return;
+        }
+        сurrentStation = 0;
+    }
+
+
+    public void previousStation() {
+        if (сurrentStation > 0) {
+            сurrentStation = сurrentStation - 1;
+        } else {
+            сurrentStation = 9;
+        }
+    }
+
+    public void increaseVolume() {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         } else {
-            currentVolume = 10;
+            currentVolume = currentVolume;
         }
-        return currentVolume;
     }
 
-    public int decreaseVolume() {
+    public void decreaseVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         } else {
-            currentVolume = 0;
+            currentVolume = currentVolume;
         }
+    }
+
+    public void setСurrentStation(int сurrentStation) {
+        if (сurrentStation < 0) {
+            return;
+        }
+        if (сurrentStation > 9) {
+            return;
+        }
+
+        this.сurrentStation = сurrentStation;
+    }
+
+    public int getCurrentVolume() {
         return currentVolume;
-
     }
 
-    public int currentStation;
-
-    public void setToLastStation() {
-        currentStation = 9;
-    }
-
-    public void setToFirstStation() {
-        currentStation = 0;
-    }
-
-    public int goToNextStation() {
-        if (currentStation < 9) {
-            currentStation = currentStation + 1;
-        } else {
-            currentStation = 0;
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            return;
         }
-        return currentStation;
-    }
-
-    public int goToPreviousStation() {
-        if (currentStation > 0) {
-            currentStation = currentStation - 1;
-        } else {
-            currentStation = 9;
+        if (currentVolume > 100) {
+            return;
         }
-        return currentStation;
+        this.currentVolume = currentVolume;
     }
 }
 
